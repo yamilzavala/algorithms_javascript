@@ -438,3 +438,72 @@ function uniteUnique(arr) {
     return uniqueArr;
   }
 //   console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+
+//########### 26 - converting in HTML code
+function convertHTML(str) {
+    let entities = {
+      "&": "&amp;", 
+      "<": "&lt;", 
+      ">": "&gt;", 
+      "\"": "&quot;",
+      "'": "&apos;" 
+    };
+    let arrStr = str.split('').map(letter => {
+      if(entities.hasOwnProperty(letter)) {
+        return entities[letter]
+      } else {
+        return letter
+      }
+    })
+    return arrStr.join('');
+  }  
+//   console.log(convertHTML('Stuff in "quotation marks"'));
+
+//########### 27 - Fibonacci
+function sumFibs(num) {
+    if(num < 0) return 0;
+    let fibArr = [1,1];
+    let nextFib = 0;
+
+    while((nextFib = fibArr[0] + fibArr[1]) <= num ) { 
+        fibArr.unshift(nextFib);
+    }
+
+    return fibArr.reduce((acc, curr) => {       
+        if(curr % 2 != 0) return acc + curr;
+        return acc;        
+    }, 0)   
+}
+// console.log(sumFibs(75024));
+
+ //########### 28 - Prime
+function isPrime(num) {
+    if(num == 2) {
+      return true;
+    }
+
+    for(let i = 2; i < num; i++) {       
+        if(num % i == 0) {
+          return false;
+        }     
+    }
+    return true;
+  } 
+
+function sumPrimes(num) {
+  let sum = 0;
+  for(let i = 2; i <= num; i++) { 
+    if(isPrime(i)) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+// console.log(sumPrimes(10));
+
+//########### 29 -  dropElements
+function dropElements(arr, func) {
+    let sliceIndex = arr.findIndex(func);
+    return arr.slice(sliceIndex >= 0 ? sliceIndex : arr.length +1);   
+}
+// console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5; }));
