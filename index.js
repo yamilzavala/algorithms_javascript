@@ -32,13 +32,13 @@ function palindrome(str) {
 }
 
 function palindrome_2(str) {
-    let reg = /[^a-z0-9]/gi;
-    let onlyAlphaNumeric = str.toLowerCase().replace(reg, "");
-    console.log(onlyAlphaNumeric)
-    let strReverse = onlyAlphaNumeric.split("").reverse().join("");
-    if (onlyAlphaNumeric === strReverse) return true;
-    return false;
-  }
+  let reg = /[^a-z0-9]/gi;
+  let onlyAlphaNumeric = str.toLowerCase().replace(reg, "");
+  console.log(onlyAlphaNumeric);
+  let strReverse = onlyAlphaNumeric.split("").reverse().join("");
+  if (onlyAlphaNumeric === strReverse) return true;
+  return false;
+}
 //console.log(palindrome('eye'))
 
 //########### 4 - longest word
@@ -303,40 +303,138 @@ function sumAll_2(arr) {
 
 //########### 18 - diff array
 function diffArray(arr1, arr2) {
-    let result = [];
-    for (let index = 0; index < arr1.length; index++) {
-        if(arr2.indexOf(arr1[index]) === -1) result.push(arr1[index]);
-    }
-    for (let index = 0; index < arr2.length; index++) {
-        if(arr1.indexOf(arr2[index]) === -1) result.push(arr2[index]);
-    }
-    return result;
+  let result = [];
+  for (let index = 0; index < arr1.length; index++) {
+    if (arr2.indexOf(arr1[index]) === -1) result.push(arr1[index]);
+  }
+  for (let index = 0; index < arr2.length; index++) {
+    if (arr1.indexOf(arr2[index]) === -1) result.push(arr2[index]);
+  }
+  return result;
 }
 
 function diffArray_2(arr1, arr2) {
-    let joinarrays = arr1.concat(arr2);
-    return joinarrays.filter(current => {
-        return arr1.indexOf(current) === -1 || arr2.indexOf(current) === -1;
-    });
+  let joinarrays = arr1.concat(arr2);
+  return joinarrays.filter((current) => {
+    return arr1.indexOf(current) === -1 || arr2.indexOf(current) === -1;
+  });
 }
 // console.log(diffArray_2([1, 2, 3, 5], [1, 2, 3, 5, 10, 4, 7]));
 
 //########### 19 - Roman Numeral
 function convertToRoman(num) {
-    let result = '';
-    const romanNumList = {M:1000,CM:900, D:500,CD:400, C:100, XC:90,L:50, XV: 40, X:10, IX:9, V:5, IV:4, I:1};
-   for(let key in romanNumList) {
-       while(num >= romanNumList[key]) {
-            result +=  key;
-            num -= romanNumList[key];
-       }
-   }
-   return result;
+  let result = "";
+  const romanNumList = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XV: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1,
+  };
+  for (let key in romanNumList) {
+    while (num >= romanNumList[key]) {
+      result += key;
+      num -= romanNumList[key];
+    }
+  }
+  return result;
 }
-console.log(convertToRoman(15)); 
+// console.log(convertToRoman(15));
 
-//########### 20 -
+//########### 20 - Replace
+function replaceWords(str, before, after) {
+  return before.charAt(0) === before.charAt(0).toUpperCase()
+    ? str.replace(before, after.charAt(0).toUpperCase() + after.slice(1))
+    : before.charAt(0) === before.charAt(0).toLowerCase()
+    ? str.replace(before, after.charAt(0).toLowerCase() + after.slice(1))
+    : str.replace(before, after);
+}
 
-//########### 21 -
+function replaceWords_2(str, before, after) {
+  if (before.charAt(0) === before.charAt(0).toUpperCase()) {
+    str = str.replace(before, after.charAt(0).toUpperCase() + after.slice(1));
+  } else if (before.charAt(0) === before.charAt(0).toLowerCase()) {
+    str = str.replace(before, after.charAt(0).toLowerCase() + after.slice(1));
+  } else {
+    str = str.replace(before, after);
+  }
+  return str;
+}
+// console.log(replaceWords_2("A quick brown fox jumped over the lazy dog", "jumped", "Leaped"));
 
-//########### 22 -
+//########### 21 - Missing letters
+function fearNotLetter(str) {
+  let first = str.charCodeAt(0);
+  let end = str.charCodeAt(str.length - 1);
+  for (let i = first; i <= end; i++) {
+    let letter = String.fromCharCode(i);
+    let strLetter = str[i - first];
+    if (letter !== strLetter) return letter;
+  }
+  return undefined;
+}
+// console.log(fearNotLetter("abce"));
+
+//########### 22 - DNA pairing
+function DNAPair(str) {
+  let pair = {
+    A: "T",
+    T: "A",
+    C: "G",
+    G: "C",
+  };
+  return str.split("").map((letter) => {
+    return [letter, pair[letter]];
+  });
+}
+// console.log(DNAPair("GCG"));
+
+//########### 23 - spinal Case
+function spinalCase(str) {
+  let newStr = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+  let regex = /[\s_]+/g;
+  return newStr.split(regex).join("-").toLowerCase();
+}
+// console.log(spinalCase('thisIsSpinalTap'));
+
+
+
+//########### 24 - Pin latin
+function translatePigLatin(str) {
+  let vowels = ["a", "e", "i", "o", "u"];
+  let cluster = "";
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.some((v) => v === str[i])) {
+      break;
+    } else {
+      cluster += str[i];
+    }
+  }
+
+  if (!cluster.length) {
+    return str + "way";
+  } else {
+    return str.slice(cluster.length) + cluster + "ay";
+  }
+}
+// console.log(translatePigLatin("dover"));
+
+
+//########### 25 - Sorted Union
+function uniteUnique(arr) {
+    let uniqueArr = [];
+    let flatArray = Array.from(arguments).reduce((acc, curr) => acc.concat(curr), []);
+    flatArray.map(item => {
+      if(!uniqueArr.includes(item)) uniqueArr.push(item);
+    })
+    return uniqueArr;
+  }
+//   console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
