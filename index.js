@@ -702,5 +702,103 @@ const rps = (p1, p2) => {
         return 'Player 2 won'
     }
   };
+// console.log(rps_2('scissors','scissors'));  
 
-console.log(rps_2('scissors','scissors'));  
+//########### 44 - removw
+function removeChar(str){
+  return str.split('').slice(1,str.length-1).join('');  
+}
+
+function removeChar_slice(str){
+  return str.slice(1,-1) 
+}
+
+function removeChar_2(str){
+  return str.substr(1,str.length-2);  
+};
+// console.log(removeChar_slice('hola'));
+
+//########### 45 - sum all positives
+function sumAllPositives(arr) {
+  return arr.filter(item => item > 0).reduce((a,b) => a + b,0)
+}
+// console.log(sumAllPositives([1,-2,3,4,5]));
+
+//########### 46 operations
+const operations = (operator, val1, val2) => { 
+  return eval(`${val1} ${operator} ${val2}`) ;
+}
+// console.log(operations('+', 2, 3));
+
+
+//########### 47 repeat string
+const repetatStr = (str, num) => {
+  let repeat = '';
+  for (let i = 0; i < num; i++) { 
+    repeat += str;
+  }
+  return repeat;
+}
+
+const repetatStr_r = (str, num) => {
+  return str.repeat(num);
+}
+// console.log(repetatStr_r('hi',3));
+
+//########### 48 remove spaces
+const removeSpaces = (str) => {
+  return str.replace(/\s/g, '')
+}
+// console.log(removeSpaces('Hola yam il'));
+
+//########### 49 double
+const double = (arr) => {
+  return arr.map( item => item * 2)
+}
+// console.log(double([1,2,3]));
+
+//########### 50 bullet by dragon
+const bulletByDragon = (bullets, dragons) => bullets / dragons >= 2;
+// console.log(bulletByDragon(3,2));
+
+//########### 51 sumArrays
+const sumArrs = (arr1, arr2) => {
+  return arr1.reduce((a,b) => a + b, 0) + arr2.reduce((a,b) => a + b, 0)
+}
+
+const sumArrs_2 = (arr1, arr2) => {
+  return arr1.concat(arr2).reduce((a,b) => a + b, 0)
+}
+// console.log(sumArrs_2([1,2,3], [4,1]));
+
+//########### 52 century
+function geyCenturyByYear(year) {
+  return Math.ceil(year/100)
+}
+// console.log(geyCenturyByYear(2021));
+
+//########### 53 agePets
+function catAndDogYears (humanYears) {
+  let petyears = {1: 15, 2: 9, 3: 4}
+  if(typeof humanYears !== 'number') return 'Invalid years';
+  if(humanYears == 1) {
+    return [humanYears, petyears[1], petyears[1]]
+  } else if(humanYears > 1 && humanYears < 3) {
+    return [humanYears, petyears[2], petyears[2]]
+  } else {
+    return [humanYears, humanYears * petyears[3], humanYears * petyears[3] + 1]
+  }
+}
+// console.log(catAndDogYears(3));
+
+//########### 54 scoreTeams
+function chanpionshipScore(arr) {
+  let points = 0;
+  arr.map(item => {
+    let x = item.split(':')[0];
+    let y = item.split(':')[1];    
+    return x > y ? points += 3 : x === y ? points += 1 : points += 0
+  });
+  return points;
+}
+console.log(chanpionshipScore(['6:4','5:5','6:4','5:5']))
