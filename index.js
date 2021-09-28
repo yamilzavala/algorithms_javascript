@@ -549,3 +549,55 @@ function truthCheck(collection, pre) {
 //     "age"
 //   )
 // );
+
+//########### 33 - Call itself and return a function
+function addTogether() {
+  let args = [...arguments];
+  console.log(args);
+  if (args.some((item) => typeof item !== "number")) {
+    return undefined;
+  } else if (args.length == 1) {
+    return (x) => addTogether(args[0], x);
+  } else {
+    return args[0] + args[1];
+  }
+}
+//addTogether(2, 3);
+
+//########### 34 - Building a person - get and set
+var Person = function (firstAndLast) {
+  this.getFullName = function () {
+    return firstAndLast;
+  };
+  this.getFirstName = function () {
+    return firstAndLast.split(" ")[0];
+  };
+  this.getLastName = function () {
+    return firstAndLast.split(" ")[1];
+  };
+
+  this.setFirstName = function (first) {
+    firstAndLast = first + " " + this.getLastName();
+  };
+  this.setLastName = function (last) {
+    firstAndLast = this.getFirstName() + " " + last;
+  };
+  this.setFullName = function (fullname) {
+    firstAndLast = fullname;
+  };
+};
+let bob = new Person("Yamil Zavala");
+
+//########### 35 - Orbital period
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  return arr.map((elem) => {
+    elem.orbitalPeriod = Math.round(
+      2 * Math.PI * Math.sqrt(Math.pow(earthRadius + elem.avgAlt, 3) / GM)
+    );
+    delete elem.avgAlt;
+    return elem;
+  });
+}
+// orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
