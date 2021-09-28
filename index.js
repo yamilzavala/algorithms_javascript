@@ -601,3 +601,106 @@ function orbitalPeriod(arr) {
   });
 }
 // orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
+
+//########### 36 - Even or Odd
+function everOrOdd(num) {
+  return num % 2 === 0 ? "Even" : "Odd";
+}
+// console.log(everOrOdd(23));
+
+//########### 37 - Count vowel
+function countVowel(str) {
+  let countVowels = [];
+  let vowels = ["a", "e", "i", "o", "u"];
+  str
+    .toLowerCase()
+    .replace(" ", "")
+    .split("")
+    .map((letter) => {
+      return typeof letter == "string" && vowels.includes(letter)
+        ? countVowels.push(true)
+        : countVowels.push(false);
+    });
+  return countVowels;
+}
+// console.log(countVowel('lA eUo 4I'));
+
+//########### 38 - Is n divisible by x and y?
+function isDivideBy(n, x, y) {
+  return n > 0 && n >= x && n >= y && (n / x) % 1 == 0 && (n / y) % 1 == 0
+    ? true
+    : false;
+}
+// console.log(isDivideBy(6,3,6));
+
+//########### 39
+function makeNegative(num) {
+  return -Math.abs(num); //absolute num value
+}
+
+//########### 40
+function findSmallestInt(args) {
+  return Math.min(...args);
+}
+
+function findSmallestInt_Reduce(args) {
+  let array = [...args];
+  return array.reduce((a,b) => {
+      return b < a ? b : a
+  } ,array[0])
+}
+
+function findSmallestInt_Loop(args) {
+    let array = [...args];
+    let min = array[0];
+    console.log(min);
+    for(let i = 0; i < array.length; i++) { 
+       if(min > array [i]) min =  array [i];
+    }
+    return min;
+  }
+// console.log(findSmallestInt_Loop([78, 56, 232, 12, 8]));
+
+//########### 41 - summation
+var summation = function (num) {
+    let sum = 0;
+    for(let i = 0; i <= num; i++) {
+      sum += i;
+    }
+    return sum;
+  }
+//   console.log(summation(8))
+
+
+//########### 42 - average (avg)
+function average (arr) {
+    let array = [...arr];
+    return Math.floor(array.reduce((a,b) => a + b, 0) / array.length);
+}
+// console.log(average([5,6,8]));
+
+//########### 43 - piedra papel o tijera
+const rps = (p1, p2) => {
+    let rules = {
+      'rock': 'scissors',
+      'paper': 'rock',
+      'scissors': 'paper'
+    }
+    if(p2 === p1) return 'Draw';
+    if(p2 === rules[p1]) {
+        return 'Player 1 won'
+    } else {
+        return 'Player 2 won'
+    }
+  };
+
+  const rps_2 = (p1, p2) => {
+    if(p1 === p2) return 'Draw';
+    if((p1 === 'rock' && p2 === 'scissors') || (p1 === 'paper' && p2 === 'rock') || (p1 === 'scissors' && p2 === 'paper')) {
+        return 'Player 1 won'
+    } else {
+        return 'Player 2 won'
+    }
+  };
+
+console.log(rps_2('scissors','scissors'));  
