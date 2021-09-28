@@ -405,8 +405,6 @@ function spinalCase(str) {
 }
 // console.log(spinalCase('thisIsSpinalTap'));
 
-
-
 //########### 24 - Pin latin
 function translatePigLatin(str) {
   let vowels = ["a", "e", "i", "o", "u"];
@@ -427,73 +425,75 @@ function translatePigLatin(str) {
 }
 // console.log(translatePigLatin("dover"));
 
-
 //########### 25 - Sorted Union
 function uniteUnique(arr) {
-    let uniqueArr = [];
-    let flatArray = Array.from(arguments).reduce((acc, curr) => acc.concat(curr), []);
-    flatArray.map(item => {
-      if(!uniqueArr.includes(item)) uniqueArr.push(item);
-    })
-    return uniqueArr;
-  }
+  let uniqueArr = [];
+  let flatArray = Array.from(arguments).reduce(
+    (acc, curr) => acc.concat(curr),
+    []
+  );
+  flatArray.map((item) => {
+    if (!uniqueArr.includes(item)) uniqueArr.push(item);
+  });
+  return uniqueArr;
+}
 //   console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
 
 //########### 26 - converting in HTML code
 function convertHTML(str) {
-    let entities = {
-      "&": "&amp;", 
-      "<": "&lt;", 
-      ">": "&gt;", 
-      "\"": "&quot;",
-      "'": "&apos;" 
-    };
-    let arrStr = str.split('').map(letter => {
-      if(entities.hasOwnProperty(letter)) {
-        return entities[letter]
-      } else {
-        return letter
-      }
-    })
-    return arrStr.join('');
-  }  
+  let entities = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;",
+  };
+  let arrStr = str.split("").map((letter) => {
+    if (entities.hasOwnProperty(letter)) {
+      return entities[letter];
+    } else {
+      return letter;
+    }
+  });
+  return arrStr.join("");
+}
 //   console.log(convertHTML('Stuff in "quotation marks"'));
 
 //########### 27 - Fibonacci
 function sumFibs(num) {
-    if(num < 0) return 0;
-    let fibArr = [1,1];
-    let nextFib = 0;
+  if (num < 0) return 0;
+  let fibArr = [1, 1];
+  let nextFib = 0;
 
-    while((nextFib = fibArr[0] + fibArr[1]) <= num ) { 
-        fibArr.unshift(nextFib);
-    }
+  while ((nextFib = fibArr[0] + fibArr[1]) <= num) {
+    fibArr.unshift(nextFib);
+  }
 
-    return fibArr.reduce((acc, curr) => {       
-        if(curr % 2 != 0) return acc + curr;
-        return acc;        
-    }, 0)   
+  return fibArr.reduce((acc, curr) => {
+    if (curr % 2 != 0) return acc + curr;
+    return acc;
+  }, 0);
 }
 // console.log(sumFibs(75024));
 
- //########### 28 - Prime
+//########### 28 - Prime
 function isPrime(num) {
-    if(num == 2) {
-      return true;
-    }
-
-    for(let i = 2; i < num; i++) {       
-        if(num % i == 0) {
-          return false;
-        }     
-    }
+  if (num == 2) {
     return true;
-  } 
+  }
+
+  for (let i = 2; i < num; i++) {
+    if (num % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
 
 function sumPrimes(num) {
   let sum = 0;
-  for(let i = 2; i <= num; i++) { 
-    if(isPrime(i)) {
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i)) {
       sum += i;
     }
   }
@@ -503,7 +503,49 @@ function sumPrimes(num) {
 
 //########### 29 -  dropElements
 function dropElements(arr, func) {
-    let sliceIndex = arr.findIndex(func);
-    return arr.slice(sliceIndex >= 0 ? sliceIndex : arr.length +1);   
+  let sliceIndex = arr.findIndex(func);
+  return arr.slice(sliceIndex >= 0 ? sliceIndex : arr.length + 1);
 }
 // console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5; }));
+
+//########### 30 -  nested arrays
+function steamrollArray(arr) {
+  return arr.reduce((a, b) => {
+    if (Array.isArray(b)) {
+      return a.concat(steamrollArray(b));
+    }
+    return a.concat(b);
+  }, []);
+}
+//   console.log(steamrollArray([[["a"]], [["b"]]]));
+
+//########### 31 -  Binary agent
+function binaryAgent(str) {
+  return str
+    .split(" ")
+    .map((item) => String.fromCharCode(parseInt(item, 2)))
+    .join("");
+}
+// console.log(
+//   binaryAgent(
+//     "01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"
+//   )
+// );
+
+//########### 32 - Everithing be true
+function truthCheck(collection, pre) {
+  return collection.every((obj) => {
+    return obj.hasOwnProperty(pre) && Boolean(obj[pre]);
+  });
+}
+// console.log(
+//   truthCheck(
+//     [
+//       { user: "Tinky-Winky", sex: "male", age: 0 },
+//       { user: "Dipsy", sex: "male", age: 3 },
+//       { user: "Laa-Laa", sex: "female", age: 5 },
+//       { user: "Po", sex: "female", age: 4 },
+//     ],
+//     "age"
+//   )
+// );
