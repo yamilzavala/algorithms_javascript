@@ -856,4 +856,61 @@ function uniqueValuesWithSet(str) {
   }
   return true;
 }
-console.log(uniqueValuesWithSet('hoola'))
+// console.log(uniqueValuesWithSet('hoola'))
+
+//########### 57 - Counting Letters - show the word that has more letters repeat
+function countingLetters(str) {  
+  let words = str.toLowerCase().split(' ');
+  words = words.map(currentWord => { 
+    let obj = {word: currentWord, max: 1}; 
+    currentWord.split('').map(letter => {
+      if(obj[letter]>obj.max) {obj.max = obj[letter]};
+      return obj[letter] = obj[letter] ? obj[letter] + 1 : 1
+    })   
+    return obj;
+  })  
+
+  let amount = 1;
+  let word = '';
+  for(let item of words) {
+    if (item.max > amount) {
+      amount = item.max;
+      word = item.word;
+    }
+  }
+
+  if (amount > 1) {
+    return word
+  }
+
+  return -1
+}
+console.log(countingLetters('javascript is esssssss')); 
+
+function countingLettersTwo(str) {  
+  let words = str.toLowerCase().split(' ');
+  words = words.map(currentWord => { 
+    let letters = currentWord.split('')
+    return letters.reduce((acc, curr) => {
+      acc[curr] =  acc[curr] ?  acc[curr] + 1 : 1;
+      if(acc[curr]>acc.max) {acc.max = acc[curr]};
+      return acc
+    }, {max: 1, word: currentWord});
+  });
+
+  let amount = 1;
+  let word = '';
+  for(let item of words) {
+    if (item.max > amount) {
+      amount = item.max;
+      word = item.word;
+    }
+  }
+
+  if (amount > 1) {
+    return word
+  }
+
+  return -1
+}
+//console.log(countingLettersTwo('javascript is esssssss'));
