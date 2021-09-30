@@ -801,4 +801,59 @@ function chanpionshipScore(arr) {
   });
   return points;
 }
-console.log(chanpionshipScore(['6:4','5:5','6:4','5:5']))
+// console.log(chanpionshipScore(['6:4','5:5','6:4','5:5']))
+
+//########### 55 object unique values
+const products = [
+  {title: 'iphone_1', company: 'apple'},
+  {title: 'iphone_2', company: 'apple'},
+  {title: 'iphone_2', company: 'apple'},
+  {title: 'galaxy', company: 'samsung'},
+  {title: 'galaxy_2', company: 'samsung'}
+]
+
+function findUniqueValuesByCompany() {
+  return [...new Set(products.map(item => item.company))];
+}
+
+function findUniqueValues() {
+  return [...products.reduce((a,c) => {
+    return a.add(c.company)
+  }, new Set())];
+}
+// console.log(findUniqueValuesByCompany());
+
+//########### 56 Unique values
+const findUnique = (str) => {
+  let values = [];
+  for(let letter of str) {
+    if (values.includes(letter)) {
+      return false
+    }
+    values.push(letter);
+  }
+  return true;
+}
+
+const findUniqueObj = (str) => {
+  let values = {};
+  for(let letter of str) {
+    if (values.hasOwnProperty(letter)) {
+      return false
+    }
+    values[letter] = values[letter]
+  }
+  return true;
+}
+
+function uniqueValuesWithSet(str) {
+  let values = new Set();
+  for(let letter of str) {
+    if(values.has(letter)){
+      return false
+    }
+    values.add(letter)
+  }
+  return true;
+}
+console.log(uniqueValuesWithSet('hoola'))
