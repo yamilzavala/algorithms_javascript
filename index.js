@@ -949,7 +949,7 @@ function mathSequencesGeoArit(arr) {
 // console.log(mathSequencesGeoArit([2,23,7,809]));
 
 
-
+//########### 59 - longest Word
 function longestStr(str) {
   let max = [''];
   let size = 0;
@@ -968,4 +968,16 @@ function longestStr(str) {
   }
   return [...max]
 }
-console.log(longestStr('hola soyy unaa prurrr'));
+// console.log(longestStr('hola soyy unaa prurrr'));
+
+//########### 60 - capitalized word
+function capitalized(str) {
+  let words = str.toLowerCase().split(' ');
+  words =  words.map(word => {
+    let letters = word.split('');
+    letters[0] = letters[0].toUpperCase();
+    return letters.join('')
+  })
+  return words.reduce((a,b) => a+' ' +b)
+}
+console.log(capitalized('la casa esta limpia'));
