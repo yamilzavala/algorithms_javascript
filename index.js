@@ -978,6 +978,56 @@ function capitalized(str) {
     letters[0] = letters[0].toUpperCase();
     return letters.join('')
   })
-  return words.reduce((a,b) => a+' ' +b)
+  return words.join(' ')
+  //return words.reduce((a,b) => a+' ' +b)
 }
-console.log(capitalized('la casa esta limpia'));
+
+function capitalizedTwo(str) {
+  let words = str.toLowerCase()
+    .split(' ')
+    .map(word => {
+    let firstLetter = word.slice(0,1).toUpperCase();
+    rest = word.slice(1);
+    return firstLetter + rest
+  })
+  return words.join(' ')
+}
+
+function capitalizedThree(str) {
+ return (
+   str.toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  ).join(' ')
+}
+// console.log(capitalizedThree('la casa esta limpia'));
+
+//########### 61 - prime
+function isPrimeNumber(num) {
+  if(num < 2) return false;
+
+  let root = Math.ceil(Math.sqrt(num))
+  for(let i = 2; i <= root; i++) {
+    if(num % i === 0) return false;
+  }
+
+  return true;
+}
+// console.log(isPrimeNumber(8));
+// console.log(isPrimeNumber(11));
+// console.log(isPrimeNumber(121));
+// console.log(isPrimeNumber(127));  
+
+//########### 62 - palindome
+function palindromeOnlyLettersAndNumbers(str){
+  let cleanStr = str.match(/[a-z0-9]+/ig).join('').toLowerCase();
+  let reverseStr = cleanStr.split('').reverse().join('');  
+  return cleanStr === reverseStr;
+}
+
+function palindrome(str){
+  let cleanStr = str.toLowerCase().split(' ').join('')
+  let reverseStr = cleanStr.split('').reverse().join('');  
+  return cleanStr === reverseStr;
+}
+// console.log(palindromeOnlyLettersAndNumbers('2la - ca -l2')); 
