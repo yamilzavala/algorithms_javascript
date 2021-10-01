@@ -1053,6 +1053,7 @@ return lastNumber === restSum;
 }
 // console.log(sumEqualToLast([1,5,9,3]))
 
+//########### 65 - Amount repeat letters
 function onlyLetters(str) {  
   let onlyLettersStr = str.toLowerCase().match(/[a-z]/ig).sort();
 
@@ -1067,4 +1068,26 @@ function onlyLetters(str) {
   }
   return result
 }
-console.log(onlyLetters('aassapttttjjjjPAAlllSl'));
+// console.log(onlyLetters('aassapttttjjjjPAAlllSl'));
+
+//########### 66 - repeat numbers
+function repeatNumbersMostTimes(arr) {
+ let value = -1;
+ let position = 0;
+ let max = 1;
+
+ let obj = arr.reduce((acc, curr, index) => { 
+  acc[curr] =  acc[curr]
+    ? acc[curr] = {...acc[curr], amount: acc[curr].amount + 1}
+    : {amount: 1, index}
+
+    if (acc[curr].amount > max || (acc[curr].index <= position) && acc[curr].amount === max) {
+      max = acc[curr].amount;
+      value = curr;
+      position = acc[curr].index
+    }
+  return acc
+ },{})
+ return value;
+}
+// console.log(repeatNumbersMostTimes([1,3,6,3,1,3,6,3,6]))
