@@ -885,7 +885,7 @@ function countingLetters(str) {
 
   return -1
 }
-console.log(countingLetters('javascript is esssssss')); 
+// console.log(countingLetters('javascript is esssssss')); 
 
 function countingLettersTwo(str) {  
   let words = str.toLowerCase().split(' ');
@@ -914,3 +914,58 @@ function countingLettersTwo(str) {
   return -1
 }
 //console.log(countingLettersTwo('javascript is esssssss'));
+
+const longestWordInStr = (str) => {
+  let splitStr =  str.toLowerCase().split(' ');
+  let longestTmp = splitStr[0];
+ 
+  splitStr.map(word => {
+      if(word.length > longestTmp.length) longestTmp = word;
+      return word
+    })
+  return longestTmp;
+}
+// console.log(longestWordInStr('asadsadsada bbb a asdf'));
+
+//########### 58 - Math Sequences
+function mathSequencesGeoArit(arr) {
+  let arit = new Set();
+  let geo = new Set();
+
+  for(let i = 1; i < arr.length; i++) {
+    let tempArit = arr[i] - arr[i-1]; 
+    arit.add(tempArit);
+
+    let tempgeo = arr[i] / arr[i-1]; 
+    geo.add(tempgeo);
+  }
+
+  if(arit.size === 1) return 'Arithmetic';
+  if(geo.size === 1) return 'Geometric';
+  return -1;
+}
+// console.log(mathSequencesGeoArit([2,4,6,8]));
+// console.log(mathSequencesGeoArit([2,4,8,16]));
+// console.log(mathSequencesGeoArit([2,23,7,809]));
+
+
+
+function longestStr(str) {
+  let max = [''];
+  let size = 0;
+  let words = str.split(' ');
+  
+  for(let i = 0; i < words.length; i++){
+    if (words[i].length >= size) {
+      size = words[i].length;
+      if (max[max.length-1].length < words[i].length) {
+        max = [];
+        max.push(words[i])
+      } else if(max[max.length-1].length == words[i].length){
+        max = [...max, words[i]]
+      }
+    }
+  }
+  return [...max]
+}
+console.log(longestStr('hola soyy unaa prurrr'));
