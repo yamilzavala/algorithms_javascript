@@ -1043,3 +1043,28 @@ function secondValue(arr) {
  if(orderArr.length > 2) return `${orderArr[1]} ${orderArr[orderArr.length-2]}`
 }
 // console.log(secondValue([88,22,11,-7,54,77]));
+
+//########### 64 - Sum is equal to last
+function sumEqualToLast(arr) {
+  let orderArr = arr.sort((a,b) => a-b) 
+  let lastNumber = orderArr.pop()  
+  let restSum = orderArr.reduce((a,b) => a+b ,0);
+return lastNumber === restSum;
+}
+// console.log(sumEqualToLast([1,5,9,3]))
+
+function onlyLetters(str) {  
+  let onlyLettersStr = str.toLowerCase().match(/[a-z]/ig).sort();
+
+  let objStr = onlyLettersStr.reduce((acc, curr) => { 
+    acc[curr] = acc[curr] ? acc[curr] + 1 : 1
+    return acc
+  },{})
+
+  let result = '';
+  for(let key in objStr) {
+    result += `${objStr[key]}${key}`
+  }
+  return result
+}
+console.log(onlyLetters('aassapttttjjjjPAAlllSl'));
