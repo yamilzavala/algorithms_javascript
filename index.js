@@ -1031,3 +1031,15 @@ function palindrome(str){
   return cleanStr === reverseStr;
 }
 // console.log(palindromeOnlyLettersAndNumbers('2la - ca -l2')); 
+
+//########### 63 - unique values
+function secondValue(arr) {
+ if(arr.length === 1) return arr; 
+ let orderArr = [...new Set(arr)].sort((a,b) => a-b);
+
+ if(orderArr.length === 2) return orderArr; 
+
+ //if(orderArr.length > 2) return orderArr.slice(1,2).concat(orderArr.slice(orderArr.length-2,orderArr.length-1))
+ if(orderArr.length > 2) return `${orderArr[1]} ${orderArr[orderArr.length-2]}`
+}
+// console.log(secondValue([88,22,11,-7,54,77]));
