@@ -78,7 +78,7 @@ function titleCase_2(str) {
     .map((word) => word[0].toUpperCase() + word.slice(1))
     .join(" ");
 }
-// console.log(titleCase('the liFe iS cUtE'));
+//console.log(titleCase_1('the liFe iS cUtE'));
 
 //########### 6 -Largest Numbers in Arrays
 function getMax(array) {
@@ -90,6 +90,7 @@ function getMax(array) {
 }
 
 function largestNumber_1(num) {
+  console.log(num);
   let result = []; //option 3
   for (let i = 0; i < num.length; i++) {
     result.push(getMax(num[i]));
@@ -106,7 +107,7 @@ function largestNumber_3(num) {
     item.reduce((a, b) => (a > b ? a : a === b ? a : b), 0)
   ); //option 2
 }
-// console.log(largestNumber_1([[5,10,2,5,7,50], [100, 150]]));
+//console.log(largestNumber_1([[5,10,2,5,7,50], [100, 150]]));
 
 //########### 7 - Confirm the Ending
 function confirmEnd(str, txt) {
@@ -167,7 +168,7 @@ function chunky_2(arr, size) {
   }
   return auxarr;
 }
-// console.log(chunky_2([1,2,3,4],2));
+// console.log(chunky_2([1,2,3,4],1));
 
 //########### 11 - Slasher
 function slasher(arr, size) {
@@ -177,7 +178,7 @@ function slasher(arr, size) {
 function slasher(arr, size) {
   return arr.slice(size, arr.length);
 }
-// console.log(slasher([1, 2, 3, 4],1));
+// console.log(slasher([1, 2, 3, 4],2));
 
 //########### 12 - mutation
 function mutation(arr, characters) {
@@ -1091,3 +1092,55 @@ function repeatNumbersMostTimes(arr) {
  return value;
 }
 // console.log(repeatNumbersMostTimes([1,3,6,3,1,3,6,3,6]))
+
+function transformNumberToStr(num) {
+  return num.toString().split('')
+}
+// console.log(transformNumberToStr(543));
+
+//permutation P(n) = n!
+let findPermutations = (string) => {
+  if (!string || typeof string !== "string"){
+    return "Please enter a string"
+  } else if (string.length < 2 ){
+    return string
+  }
+
+  let uniqueStr = '';
+  string.split('').map(item => { 
+    if(!uniqueStr.includes(item)) { uniqueStr+=item }
+  })
+
+  let permutationsArray = []    
+  for (let i = 0; i < uniqueStr.length; i++){
+    let char = uniqueStr[i]
+    let remainingChars = uniqueStr.slice(0, i) + uniqueStr.slice(i + 1, uniqueStr.length)
+
+    for (let permutation of findPermutations(remainingChars)){
+      permutationsArray.push(char + permutation) 
+    }
+  }
+  return permutationsArray
+}
+console.log(findPermutations('ho'))
+
+//########### 67 -Find all occurrences of a value 'x' in an array 'a' and return an array 
+let arr = [4,2,1,4,5,1];
+
+function findall(a,x) {
+	let auxArr = [];
+  let pos = 0;
+  
+  while(pos < arr.length){  	   
+  	pos = a.indexOf(x,pos);
+  
+    if(pos === -1) break;
+   
+    auxArr.push(pos);
+    pos += 1;
+  }
+  return auxArr;
+}
+
+// let result = findall(arr,1)
+// console.log(result)
