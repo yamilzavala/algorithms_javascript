@@ -1144,3 +1144,31 @@ function findall(a,x) {
 
 // let result = findall(arr,1)
 // console.log(result)
+
+//########### 68 - 'this': fix to call this with nested functions 
+const o = {
+  size: 0,
+    setSize(width, height) { 
+      let self = this;
+      this.size = width * height;    
+     
+     //workaround 1
+     // function showSize() {
+     // 	console.log(this.size)
+     // }
+     
+     //workaround 2
+     //const showSize = () => {
+     //	console.log(this.size)
+     //} 
+     
+     //workaround 3
+     const showSize = (function() {
+       console.log(this.size)
+     }).bind(this)
+     
+     showSize();
+    }
+  }
+  
+  //console.log(o.setSize(2,3))
