@@ -1152,17 +1152,17 @@ const o = {
       let self = this;
       this.size = width * height;    
      
-     //workaround 1
+     //workaround 1 - call to self (keep a reference to the object)
      // function showSize() {
-     // 	console.log(this.size)
+     // 	console.log(self.size)
      // }
      
-     //workaround 2
+     //workaround 2 - using arrow functions as an expresion intead a statement
      //const showSize = () => {
      //	console.log(this.size)
      //} 
      
-     //workaround 3
+     //workaround 3 - using bind and passing the current context whre is called
      const showSize = (function() {
        console.log(this.size)
      }).bind(this)
