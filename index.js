@@ -1172,3 +1172,27 @@ const o = {
   }
   
   //console.log(o.setSize(2,3))
+
+  //########### 69 - bind, call, apply
+  function greeting () {
+    console.log(`Hi ${this.name} ${this.lastname}`)
+  }
+  
+  const jhon = {name: 'jhon', lastname: 'snow'};  
+
+  //greeting.call(jhon);
+  
+  function walk(metres, direction) {
+    console.log(`${this.name}, walk ${metres}mts in direction ${direction}`)
+  }
+  
+  //walk.call(jhon, 200, 'west');
+  
+  const arrArguments = [300, 'north'];
+  //walk.apply(jhon, arrArguments);
+  
+  const jhonGreeting = greeting.bind(jhon);
+  //jhonGreeting();  
+
+  const jhonWalk = walk.bind(jhon, 2000);
+  //jhonWalk('south')
