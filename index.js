@@ -1196,3 +1196,15 @@ const o = {
 
   const jhonWalk = walk.bind(jhon, 2000);
   //jhonWalk('south')
+
+  //########### 70 - get max with rest operator
+  function getMaxWithRestOperator(first=-Infinity, ...rest) {
+    let max = first;
+    for(let value of rest) {
+      if(value > max) {max = value}
+    }
+    return max;
+  }
+  
+  //console.log(getMaxWithRest(1,23,54,3,456,236));
+  
