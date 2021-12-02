@@ -1204,7 +1204,45 @@ const o = {
       if(value > max) {max = value}
     }
     return max;
-  }
-  
+  }  
   //console.log(getMaxWithRest(1,23,54,3,456,236));
+
+  //########### 71 - time calculator that take a function and return the time that this take to resolve
+  function computeTime(fn) {
+	return function(...args) {
+   console.log(`Entering to Function name: ${fn.name}`);
+  	let time = Date.now();    
+    try {
+    	return fn(...args);
+    }
+    finally {
+    	console.log(`Exiting to function name: ${fn.name} in ${Date.now() - time} ms`)
+    }
+  }
+}
+
+function summark(value) {
+	let sum = 0;
+  for(let i = 0; i <= value; i++) sum += i;
+  console.log('Suma: ', sum)
+  return sum;
+}
+// const result = computeTime(summark)(1000000);
+// console.log(result)
+
+ //########### 72 - copies a specified number of elements from one array into another array with optionally specified starting offsets for each array.
+function arrCopy({from, to=from, n=from.length, fromIndex=0, toIndex=0}) {
+	let valuesToCopy = from.slice(fromIndex, fromIndex + n);
+  return to.splice(toIndex,0,...valuesToCopy);
+}
+
+let a = [1,2,3,4,5], b = [9,8,7,6,5];
+arrCopy({from: a, n: 3, to: b, fromIndex: 1, toIndex: 2})
+//console.log(b)
+
+//########### 73 - vector multiply by scalar value
+function vectorMultiply({x,y,z, ...rest}, scalar) {
+	return {x: x*scalar, y: y*scalar, z: z*scalar, ...rest}
+}
+// console.log(vectorMultiply({x: 2, y: 3, z: 4, w: -1}, 2))
   
