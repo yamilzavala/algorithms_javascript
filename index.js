@@ -1245,4 +1245,40 @@ function vectorMultiply({x,y,z, ...rest}, scalar) {
 	return {x: x*scalar, y: y*scalar, z: z*scalar, ...rest}
 }
 // console.log(vectorMultiply({x: 2, y: 3, z: 4, w: -1}, 2))
+
+//########### 74 - function composition
+const attackAndWalk = ({name}) => {
+	return {
+  	walk:() => console.log(`${name} walked`),
+    attack:() => console.log(`${name} attacked`)
+  }
+}
+
+const swimmer = function ({name}) {
+	return {
+  	swin: () => console.log(`${name} swam`)
+  }
+}
+
+const flyer = function({name}) {
+	return {
+  	fly: () => console.log(`${name} flew`)
+  }
+}
+
+const monsterCreator = (name) => {
+	const obj = {name};
+  return {
+  	...obj,
+    ...swimmer(obj),
+    ...flyer(obj),
+    ...attackAndWalk(obj)
+  }  
+}
+
+// const newMonsterCreator = monsterCreator('zombie');
+// newMonsterCreator.swin()
+// newMonsterCreator.fly()
+// newMonsterCreator.walk()
+// newMonsterCreator.attack()
   
