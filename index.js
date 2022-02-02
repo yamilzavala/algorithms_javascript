@@ -1317,7 +1317,7 @@ const monsterCreator = (name) => {
 // newMonsterCreator.attack()
 
 
-/**give two arrays, create a function that let's user know(true / false) wheter these two arrays contain any common item */
+/**########### 75 - give two arrays, create a function that let's user know(true / false) wheter these two arrays contain any common item */
 const a = ["a", "b", "b", "d"];
 const b = ["e", "b", "g"];
 
@@ -1365,4 +1365,41 @@ const compareApproachThree = (arr1, arr2) => {
 //console.log(compareApproachThree(a,b))
 
 const compareApproachFour = (arr1, arr2) => arr1.some((item) => arr2.includes(item));
-console.log(compareApproachFour(a, b));
+//console.log(compareApproachFour(a, b));
+
+/**########### 76 -give and array and a target, get the pair that the sume is equal to the target*/
+const a = [1,2,3,4,4,5]
+
+const getPair = (arr, target) => {
+	let result = {}
+  
+  for(let i = 0; i < arr.length; i++) {
+  	for(let j = i+1; j < arr.length; j++) {
+  		if((arr[i] + arr[j]) === target) {
+      console.log(arr[i] + arr[j])
+      	result['pair'] = {i: i,j:j};        
+      }
+  	}	
+  }  
+  return result;
+}
+//console.log(getPair(a, 9))
+
+const getPairSecondApproach = (arr, target) => {
+	let result = {}
+
+	const objFromArr = arr.reduce((acc, curr, index) => {
+  		acc[index] = curr
+  		return acc
+  }, {})
+	
+ 	for(let i = 0; i < arr.length; i++) {
+  	if(objFromArr[i+1]) {
+    	if((arr[i] + objFromArr[i+1]) === target) {
+      	result['pair'] = {first: i,second:i+1}
+      } 
+    }
+  }
+ return result;
+}
+//console.log(secondApproach(a,9))
