@@ -646,116 +646,121 @@ function findSmallestInt(args) {
 
 function findSmallestInt_Reduce(args) {
   let array = [...args];
-  return array.reduce((a,b) => {
-      return b < a ? b : a
-  } ,array[0])
+  return array.reduce((a, b) => {
+    return b < a ? b : a;
+  }, array[0]);
 }
 
 function findSmallestInt_Loop(args) {
-    let array = [...args];
-    let min = array[0];
-    console.log(min);
-    for(let i = 0; i < array.length; i++) { 
-       if(min > array [i]) min =  array [i];
-    }
-    return min;
+  let array = [...args];
+  let min = array[0];
+  console.log(min);
+  for (let i = 0; i < array.length; i++) {
+    if (min > array[i]) min = array[i];
   }
+  return min;
+}
 // console.log(findSmallestInt_Loop([78, 56, 232, 12, 8]));
 
 //########### 41 - summation
 var summation = function (num) {
-    let sum = 0;
-    for(let i = 0; i <= num; i++) {
-      sum += i;
-    }
-    return sum;
+  let sum = 0;
+  for (let i = 0; i <= num; i++) {
+    sum += i;
   }
+  return sum;
+};
 //   console.log(summation(8))
 
-
 //########### 42 - average (avg)
-function average (arr) {
-    let array = [...arr];
-    return Math.floor(array.reduce((a,b) => a + b, 0) / array.length);
+function average(arr) {
+  let array = [...arr];
+  return Math.floor(array.reduce((a, b) => a + b, 0) / array.length);
 }
 // console.log(average([5,6,8]));
 
 //########### 43 - piedra papel o tijera
 const rps = (p1, p2) => {
-    let rules = {
-      'rock': 'scissors',
-      'paper': 'rock',
-      'scissors': 'paper'
-    }
-    if(p2 === p1) return 'Draw';
-    if(p2 === rules[p1]) {
-        return 'Player 1 won'
-    } else {
-        return 'Player 2 won'
-    }
+  let rules = {
+    rock: "scissors",
+    paper: "rock",
+    scissors: "paper",
   };
+  if (p2 === p1) return "Draw";
+  if (p2 === rules[p1]) {
+    return "Player 1 won";
+  } else {
+    return "Player 2 won";
+  }
+};
 
-  const rps_2 = (p1, p2) => {
-    if(p1 === p2) return 'Draw';
-    if((p1 === 'rock' && p2 === 'scissors') || (p1 === 'paper' && p2 === 'rock') || (p1 === 'scissors' && p2 === 'paper')) {
-        return 'Player 1 won'
-    } else {
-        return 'Player 2 won'
-    }
-  };
-// console.log(rps_2('scissors','scissors'));  
+const rps_2 = (p1, p2) => {
+  if (p1 === p2) return "Draw";
+  if (
+    (p1 === "rock" && p2 === "scissors") ||
+    (p1 === "paper" && p2 === "rock") ||
+    (p1 === "scissors" && p2 === "paper")
+  ) {
+    return "Player 1 won";
+  } else {
+    return "Player 2 won";
+  }
+};
+// console.log(rps_2('scissors','scissors'));
 
 //########### 44 - removw
-function removeChar(str){
-  return str.split('').slice(1,str.length-1).join('');  
+function removeChar(str) {
+  return str
+    .split("")
+    .slice(1, str.length - 1)
+    .join("");
 }
 
-function removeChar_slice(str){
-  return str.slice(1,-1) 
+function removeChar_slice(str) {
+  return str.slice(1, -1);
 }
 
-function removeChar_2(str){
-  return str.substr(1,str.length-2);  
-};
+function removeChar_2(str) {
+  return str.substr(1, str.length - 2);
+}
 // console.log(removeChar_slice('hola'));
 
 //########### 45 - sum all positives
 function sumAllPositives(arr) {
-  return arr.filter(item => item > 0).reduce((a,b) => a + b,0)
+  return arr.filter((item) => item > 0).reduce((a, b) => a + b, 0);
 }
 // console.log(sumAllPositives([1,-2,3,4,5]));
 
 //########### 46 operations
-const operations = (operator, val1, val2) => { 
-  return eval(`${val1} ${operator} ${val2}`) ;
-}
+const operations = (operator, val1, val2) => {
+  return eval(`${val1} ${operator} ${val2}`);
+};
 // console.log(operations('+', 2, 3));
-
 
 //########### 47 repeat string
 const repetatStr = (str, num) => {
-  let repeat = '';
-  for (let i = 0; i < num; i++) { 
+  let repeat = "";
+  for (let i = 0; i < num; i++) {
     repeat += str;
   }
   return repeat;
-}
+};
 
 const repetatStr_r = (str, num) => {
   return str.repeat(num);
-}
+};
 // console.log(repetatStr_r('hi',3));
 
 //########### 48 remove spaces
 const removeSpaces = (str) => {
-  return str.replace(/\s/g, '')
-}
+  return str.replace(/\s/g, "");
+};
 // console.log(removeSpaces('Hola yam il'));
 
 //########### 49 double
 const double = (arr) => {
-  return arr.map( item => item * 2)
-}
+  return arr.map((item) => item * 2);
+};
 // console.log(double([1,2,3]));
 
 //########### 50 bullet by dragon
@@ -764,30 +769,30 @@ const bulletByDragon = (bullets, dragons) => bullets / dragons >= 2;
 
 //########### 51 sumArrays
 const sumArrs = (arr1, arr2) => {
-  return arr1.reduce((a,b) => a + b, 0) + arr2.reduce((a,b) => a + b, 0)
-}
+  return arr1.reduce((a, b) => a + b, 0) + arr2.reduce((a, b) => a + b, 0);
+};
 
 const sumArrs_2 = (arr1, arr2) => {
-  return arr1.concat(arr2).reduce((a,b) => a + b, 0)
-}
+  return arr1.concat(arr2).reduce((a, b) => a + b, 0);
+};
 // console.log(sumArrs_2([1,2,3], [4,1]));
 
 //########### 52 century
 function geyCenturyByYear(year) {
-  return Math.ceil(year/100)
+  return Math.ceil(year / 100);
 }
 // console.log(geyCenturyByYear(2021));
 
 //########### 53 agePets
-function catAndDogYears (humanYears) {
-  let petyears = {1: 15, 2: 9, 3: 4}
-  if(typeof humanYears !== 'number') return 'Invalid years';
-  if(humanYears == 1) {
-    return [humanYears, petyears[1], petyears[1]]
-  } else if(humanYears > 1 && humanYears < 3) {
-    return [humanYears, petyears[2], petyears[2]]
+function catAndDogYears(humanYears) {
+  let petyears = { 1: 15, 2: 9, 3: 4 };
+  if (typeof humanYears !== "number") return "Invalid years";
+  if (humanYears == 1) {
+    return [humanYears, petyears[1], petyears[1]];
+  } else if (humanYears > 1 && humanYears < 3) {
+    return [humanYears, petyears[2], petyears[2]];
   } else {
-    return [humanYears, humanYears * petyears[3], humanYears * petyears[3] + 1]
+    return [humanYears, humanYears * petyears[3], humanYears * petyears[3] + 1];
   }
 }
 // console.log(catAndDogYears(3));
@@ -795,10 +800,10 @@ function catAndDogYears (humanYears) {
 //########### 54 scoreTeams
 function chanpionshipScore(arr) {
   let points = 0;
-  arr.map(item => {
-    let x = item.split(':')[0];
-    let y = item.split(':')[1];    
-    return x > y ? points += 3 : x === y ? points += 1 : points += 0
+  arr.map((item) => {
+    let x = item.split(":")[0];
+    let y = item.split(":")[1];
+    return x > y ? (points += 3) : x === y ? (points += 1) : (points += 0);
   });
   return points;
 }
@@ -806,102 +811,78 @@ function chanpionshipScore(arr) {
 
 //########### 55 object unique values
 const products = [
-  {title: 'iphone_1', company: 'apple'},
-  {title: 'iphone_2', company: 'apple'},
-  {title: 'iphone_2', company: 'apple'},
-  {title: 'galaxy', company: 'samsung'},
-  {title: 'galaxy_2', company: 'samsung'}
-]
+  { title: "iphone_1", company: "apple" },
+  { title: "iphone_2", company: "apple" },
+  { title: "iphone_2", company: "apple" },
+  { title: "galaxy", company: "samsung" },
+  { title: "galaxy_2", company: "samsung" },
+];
 
 function findUniqueValuesByCompany() {
-  return [...new Set(products.map(item => item.company))];
+  return [...new Set(products.map((item) => item.company))];
 }
 
 function findUniqueValues() {
-  return [...products.reduce((a,c) => {
-    return a.add(c.company)
-  }, new Set())];
+  return [
+    ...products.reduce((a, c) => {
+      return a.add(c.company);
+    }, new Set()),
+  ];
 }
 // console.log(findUniqueValuesByCompany());
 
 //########### 56 Unique values
 const findUnique = (str) => {
   let values = [];
-  for(let letter of str) {
+  for (let letter of str) {
     if (values.includes(letter)) {
-      return false
+      return false;
     }
     values.push(letter);
   }
   return true;
-}
+};
 
 const findUniqueObj = (str) => {
   let values = {};
-  for(let letter of str) {
+  for (let letter of str) {
     if (values.hasOwnProperty(letter)) {
-      return false
+      return false;
     }
-    values[letter] = values[letter]
+    values[letter] = values[letter];
   }
   return true;
-}
+};
 
 function uniqueValuesWithSet(str) {
   let values = new Set();
-  for(let letter of str) {
-    if(values.has(letter)){
-      return false
+  for (let letter of str) {
+    if (values.has(letter)) {
+      return false;
     }
-    values.add(letter)
+    values.add(letter);
   }
   return true;
 }
 // console.log(uniqueValuesWithSet('hoola'))
 
 //########### 57 - Counting Letters - show the word that has more letters repeat
-function countingLetters(str) {  
-  let words = str.toLowerCase().split(' ');
-  words = words.map(currentWord => { 
-    let obj = {word: currentWord, max: 1}; 
-    currentWord.split('').map(letter => {
-      if(obj[letter]>obj.max) {obj.max = obj[letter]};
-      return obj[letter] = obj[letter] ? obj[letter] + 1 : 1
-    })   
+function countingLetters(str) {
+  let words = str.toLowerCase().split(" ");
+  words = words.map((currentWord) => {
+    let obj = { word: currentWord, max: 1 };
+    currentWord.split("").map((letter) => {
+      if (obj[letter] > obj.max) {
+        obj.max = obj[letter];
+      }
+      return (obj[letter] = obj[letter] ? obj[letter] + 1 : 1);
+    });
     return obj;
-  })  
-
-  let amount = 1;
-  let word = '';
-  for(let item of words) {
-    if (item.max > amount) {
-      amount = item.max;
-      word = item.word;
-    }
-  }
-
-  if (amount > 1) {
-    return word
-  }
-
-  return -1
-}
-// console.log(countingLetters('javascript is esssssss')); 
-
-function countingLettersTwo(str) {  
-  let words = str.toLowerCase().split(' ');
-  words = words.map(currentWord => { 
-    let letters = currentWord.split('')
-    return letters.reduce((acc, curr) => {
-      acc[curr] =  acc[curr] ?  acc[curr] + 1 : 1;
-      if(acc[curr]>acc.max) {acc.max = acc[curr]};
-      return acc
-    }, {max: 1, word: currentWord});
   });
 
   let amount = 1;
-  let word = '';
-  for(let item of words) {
+  let word = "";
+  for (let item of words) {
     if (item.max > amount) {
       amount = item.max;
       word = item.word;
@@ -909,23 +890,56 @@ function countingLettersTwo(str) {
   }
 
   if (amount > 1) {
-    return word
+    return word;
   }
 
-  return -1
+  return -1;
+}
+// console.log(countingLetters('javascript is esssssss'));
+
+function countingLettersTwo(str) {
+  let words = str.toLowerCase().split(" ");
+  words = words.map((currentWord) => {
+    let letters = currentWord.split("");
+    return letters.reduce(
+      (acc, curr) => {
+        acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
+        if (acc[curr] > acc.max) {
+          acc.max = acc[curr];
+        }
+        return acc;
+      },
+      { max: 1, word: currentWord }
+    );
+  });
+
+  let amount = 1;
+  let word = "";
+  for (let item of words) {
+    if (item.max > amount) {
+      amount = item.max;
+      word = item.word;
+    }
+  }
+
+  if (amount > 1) {
+    return word;
+  }
+
+  return -1;
 }
 //console.log(countingLettersTwo('javascript is esssssss'));
 
 const longestWordInStr = (str) => {
-  let splitStr =  str.toLowerCase().split(' ');
+  let splitStr = str.toLowerCase().split(" ");
   let longestTmp = splitStr[0];
- 
-  splitStr.map(word => {
-      if(word.length > longestTmp.length) longestTmp = word;
-      return word
-    })
+
+  splitStr.map((word) => {
+    if (word.length > longestTmp.length) longestTmp = word;
+    return word;
+  });
   return longestTmp;
-}
+};
 // console.log(longestWordInStr('asadsadsada bbb a asdf'));
 
 //########### 58 - Math Sequences
@@ -933,83 +947,83 @@ function mathSequencesGeoArit(arr) {
   let arit = new Set();
   let geo = new Set();
 
-  for(let i = 1; i < arr.length; i++) {
-    let tempArit = arr[i] - arr[i-1]; 
+  for (let i = 1; i < arr.length; i++) {
+    let tempArit = arr[i] - arr[i - 1];
     arit.add(tempArit);
 
-    let tempgeo = arr[i] / arr[i-1]; 
+    let tempgeo = arr[i] / arr[i - 1];
     geo.add(tempgeo);
   }
 
-  if(arit.size === 1) return 'Arithmetic';
-  if(geo.size === 1) return 'Geometric';
+  if (arit.size === 1) return "Arithmetic";
+  if (geo.size === 1) return "Geometric";
   return -1;
 }
 // console.log(mathSequencesGeoArit([2,4,6,8]));
 // console.log(mathSequencesGeoArit([2,4,8,16]));
 // console.log(mathSequencesGeoArit([2,23,7,809]));
 
-
 //########### 59 - longest Word
 function longestStr(str) {
-  let max = [''];
+  let max = [""];
   let size = 0;
-  let words = str.split(' ');
-  
-  for(let i = 0; i < words.length; i++){
+  let words = str.split(" ");
+
+  for (let i = 0; i < words.length; i++) {
     if (words[i].length >= size) {
       size = words[i].length;
-      if (max[max.length-1].length < words[i].length) {
+      if (max[max.length - 1].length < words[i].length) {
         max = [];
-        max.push(words[i])
-      } else if(max[max.length-1].length == words[i].length){
-        max = [...max, words[i]]
+        max.push(words[i]);
+      } else if (max[max.length - 1].length == words[i].length) {
+        max = [...max, words[i]];
       }
     }
   }
-  return [...max]
+  return [...max];
 }
 // console.log(longestStr('hola soyy unaa prurrr'));
 
 //########### 60 - capitalized word
 function capitalized(str) {
-  let words = str.toLowerCase().split(' ');
-  words =  words.map(word => {
-    let letters = word.split('');
+  let words = str.toLowerCase().split(" ");
+  words = words.map((word) => {
+    let letters = word.split("");
     letters[0] = letters[0].toUpperCase();
-    return letters.join('')
-  })
-  return words.join(' ')
+    return letters.join("");
+  });
+  return words.join(" ");
   //return words.reduce((a,b) => a+' ' +b)
 }
 
 function capitalizedTwo(str) {
-  let words = str.toLowerCase()
-    .split(' ')
-    .map(word => {
-    let firstLetter = word.slice(0,1).toUpperCase();
-    rest = word.slice(1);
-    return firstLetter + rest
-  })
-  return words.join(' ')
+  let words = str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => {
+      let firstLetter = word.slice(0, 1).toUpperCase();
+      rest = word.slice(1);
+      return firstLetter + rest;
+    });
+  return words.join(" ");
 }
 
 function capitalizedThree(str) {
- return (
-   str.toLowerCase()
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-  ).join(' ')
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 // console.log(capitalizedThree('la casa esta limpia'));
 
 //########### 61 - prime
 function isPrimeNumber(num) {
-  if(num < 2) return false;
+  if (num < 2) return false;
 
-  let root = Math.ceil(Math.sqrt(num))
-  for(let i = 2; i <= root; i++) {
-    if(num % i === 0) return false;
+  let root = Math.ceil(Math.sqrt(num));
+  for (let i = 2; i <= root; i++) {
+    if (num % i === 0) return false;
   }
 
   return true;
@@ -1017,125 +1031,135 @@ function isPrimeNumber(num) {
 // console.log(isPrimeNumber(8));
 // console.log(isPrimeNumber(11));
 // console.log(isPrimeNumber(121));
-// console.log(isPrimeNumber(127));  
+// console.log(isPrimeNumber(127));
 
 //########### 62 - palindome
-function palindromeOnlyLettersAndNumbers(str){
-  let cleanStr = str.match(/[a-z0-9]+/ig).join('').toLowerCase();
-  let reverseStr = cleanStr.split('').reverse().join('');  
+function palindromeOnlyLettersAndNumbers(str) {
+  let cleanStr = str
+    .match(/[a-z0-9]+/gi)
+    .join("")
+    .toLowerCase();
+  let reverseStr = cleanStr.split("").reverse().join("");
   return cleanStr === reverseStr;
 }
 
-function palindrome(str){
-  let cleanStr = str.toLowerCase().split(' ').join('')
-  let reverseStr = cleanStr.split('').reverse().join('');  
+function palindrome(str) {
+  let cleanStr = str.toLowerCase().split(" ").join("");
+  let reverseStr = cleanStr.split("").reverse().join("");
   return cleanStr === reverseStr;
 }
-// console.log(palindromeOnlyLettersAndNumbers('2la - ca -l2')); 
+// console.log(palindromeOnlyLettersAndNumbers('2la - ca -l2'));
 
 //########### 63 - unique values
 function secondValue(arr) {
- if(arr.length === 1) return arr; 
- let orderArr = [...new Set(arr)].sort((a,b) => a-b);
+  if (arr.length === 1) return arr;
+  let orderArr = [...new Set(arr)].sort((a, b) => a - b);
 
- if(orderArr.length === 2) return orderArr; 
+  if (orderArr.length === 2) return orderArr;
 
- //if(orderArr.length > 2) return orderArr.slice(1,2).concat(orderArr.slice(orderArr.length-2,orderArr.length-1))
- if(orderArr.length > 2) return `${orderArr[1]} ${orderArr[orderArr.length-2]}`
+  //if(orderArr.length > 2) return orderArr.slice(1,2).concat(orderArr.slice(orderArr.length-2,orderArr.length-1))
+  if (orderArr.length > 2)
+    return `${orderArr[1]} ${orderArr[orderArr.length - 2]}`;
 }
 // console.log(secondValue([88,22,11,-7,54,77]));
 
 //########### 64 - Sum is equal to last
 function sumEqualToLast(arr) {
-  let orderArr = arr.sort((a,b) => a-b) 
-  let lastNumber = orderArr.pop()  
-  let restSum = orderArr.reduce((a,b) => a+b ,0);
-return lastNumber === restSum;
+  let orderArr = arr.sort((a, b) => a - b);
+  let lastNumber = orderArr.pop();
+  let restSum = orderArr.reduce((a, b) => a + b, 0);
+  return lastNumber === restSum;
 }
 // console.log(sumEqualToLast([1,5,9,3]))
 
 //########### 65 - Amount repeat letters
-function onlyLetters(str) {  
-  let onlyLettersStr = str.toLowerCase().match(/[a-z]/ig).sort();
+function onlyLetters(str) {
+  let onlyLettersStr = str.toLowerCase().match(/[a-z]/gi).sort();
 
-  let objStr = onlyLettersStr.reduce((acc, curr) => { 
-    acc[curr] = acc[curr] ? acc[curr] + 1 : 1
-    return acc
-  },{})
+  let objStr = onlyLettersStr.reduce((acc, curr) => {
+    acc[curr] = acc[curr] ? acc[curr] + 1 : 1;
+    return acc;
+  }, {});
 
-  let result = '';
-  for(let key in objStr) {
-    result += `${objStr[key]}${key}`
+  let result = "";
+  for (let key in objStr) {
+    result += `${objStr[key]}${key}`;
   }
-  return result
+  return result;
 }
 // console.log(onlyLetters('aassapttttjjjjPAAlllSl'));
 
 //########### 66 - repeat numbers
 function repeatNumbersMostTimes(arr) {
- let value = -1;
- let position = 0;
- let max = 1;
+  let value = -1;
+  let position = 0;
+  let max = 1;
 
- let obj = arr.reduce((acc, curr, index) => { 
-  acc[curr] =  acc[curr]
-    ? acc[curr] = {...acc[curr], amount: acc[curr].amount + 1}
-    : {amount: 1, index}
+  let obj = arr.reduce((acc, curr, index) => {
+    acc[curr] = acc[curr]
+      ? (acc[curr] = { ...acc[curr], amount: acc[curr].amount + 1 })
+      : { amount: 1, index };
 
-    if (acc[curr].amount > max || (acc[curr].index <= position) && acc[curr].amount === max) {
+    if (
+      acc[curr].amount > max ||
+      (acc[curr].index <= position && acc[curr].amount === max)
+    ) {
       max = acc[curr].amount;
       value = curr;
-      position = acc[curr].index
+      position = acc[curr].index;
     }
-  return acc
- },{})
- return value;
+    return acc;
+  }, {});
+  return value;
 }
 // console.log(repeatNumbersMostTimes([1,3,6,3,1,3,6,3,6]))
 
 function transformNumberToStr(num) {
-  return num.toString().split('')
+  return num.toString().split("");
 }
 // console.log(transformNumberToStr(543));
 
 //permutation P(n) = n!
 let findPermutations = (string) => {
-  if (!string || typeof string !== "string"){
-    return "Please enter a string"
-  } else if (string.length < 2 ){
-    return string
+  if (!string || typeof string !== "string") {
+    return "Please enter a string";
+  } else if (string.length < 2) {
+    return string;
   }
 
-  let uniqueStr = '';
-  string.split('').map(item => { 
-    if(!uniqueStr.includes(item)) { uniqueStr+=item }
-  })
+  let uniqueStr = "";
+  string.split("").map((item) => {
+    if (!uniqueStr.includes(item)) {
+      uniqueStr += item;
+    }
+  });
 
-  let permutationsArray = []    
-  for (let i = 0; i < uniqueStr.length; i++){
-    let char = uniqueStr[i]
-    let remainingChars = uniqueStr.slice(0, i) + uniqueStr.slice(i + 1, uniqueStr.length)
+  let permutationsArray = [];
+  for (let i = 0; i < uniqueStr.length; i++) {
+    let char = uniqueStr[i];
+    let remainingChars =
+      uniqueStr.slice(0, i) + uniqueStr.slice(i + 1, uniqueStr.length);
 
-    for (let permutation of findPermutations(remainingChars)){
-      permutationsArray.push(char + permutation) 
+    for (let permutation of findPermutations(remainingChars)) {
+      permutationsArray.push(char + permutation);
     }
   }
-  return permutationsArray
-}
-console.log(findPermutations('ho'))
+  return permutationsArray;
+};
+console.log(findPermutations("ho"));
 
-//########### 67 -Find all occurrences of a value 'x' in an array 'a' and return an array 
-let arr = [4,2,1,4,5,1];
+//########### 67 -Find all occurrences of a value 'x' in an array 'a' and return an array
+let arr = [4, 2, 1, 4, 5, 1];
 
-function findall(a,x) {
-	let auxArr = [];
+function findall(a, x) {
+  let auxArr = [];
   let pos = 0;
-  
-  while(pos < arr.length){  	   
-  	pos = a.indexOf(x,pos);
-  
-    if(pos === -1) break;
-   
+
+  while (pos < arr.length) {
+    pos = a.indexOf(x, pos);
+
+    if (pos === -1) break;
+
     auxArr.push(pos);
     pos += 1;
   }
@@ -1145,140 +1169,200 @@ function findall(a,x) {
 // let result = findall(arr,1)
 // console.log(result)
 
-//########### 68 - 'this': fix to call this with nested functions 
+//########### 68 - 'this': fix to call this with nested functions
 const o = {
   size: 0,
-    setSize(width, height) { 
-      let self = this;
-      this.size = width * height;    
-     
-     //workaround 1 - call to self (keep a reference to the object)
-     // function showSize() {
-     // 	console.log(self.size)
-     // }
-     
-     //workaround 2 - using arrow functions as an expresion intead a statement
-     //const showSize = () => {
-     //	console.log(this.size)
-     //} 
-     
-     //workaround 3 - using bind and passing the current context whre is called
-     const showSize = (function() {
-       console.log(this.size)
-     }).bind(this)
-     
-     showSize();
+  setSize(width, height) {
+    let self = this;
+    this.size = width * height;
+
+    //workaround 1 - call to self (keep a reference to the object)
+    // function showSize() {
+    // 	console.log(self.size)
+    // }
+
+    //workaround 2 - using arrow functions as an expresion intead a statement
+    //const showSize = () => {
+    //	console.log(this.size)
+    //}
+
+    //workaround 3 - using bind and passing the current context whre is called
+    const showSize = function () {
+      console.log(this.size);
+    }.bind(this);
+
+    showSize();
+  },
+};
+
+//console.log(o.setSize(2,3))
+
+//########### 69 - bind, call, apply
+function greeting() {
+  console.log(`Hi ${this.name} ${this.lastname}`);
+}
+
+const jhon = { name: "jhon", lastname: "snow" };
+
+//greeting.call(jhon);
+
+function walk(metres, direction) {
+  console.log(`${this.name}, walk ${metres}mts in direction ${direction}`);
+}
+
+//walk.call(jhon, 200, 'west');
+
+const arrArguments = [300, "north"];
+//walk.apply(jhon, arrArguments);
+
+const jhonGreeting = greeting.bind(jhon);
+//jhonGreeting();
+
+const jhonWalk = walk.bind(jhon, 2000);
+//jhonWalk('south')
+
+//########### 70 - get max with rest operator
+function getMaxWithRestOperator(first = -Infinity, ...rest) {
+  let max = first;
+  for (let value of rest) {
+    if (value > max) {
+      max = value;
     }
   }
-  
-  //console.log(o.setSize(2,3))
+  return max;
+}
+//console.log(getMaxWithRest(1,23,54,3,456,236));
 
-  //########### 69 - bind, call, apply
-  function greeting () {
-    console.log(`Hi ${this.name} ${this.lastname}`)
-  }
-  
-  const jhon = {name: 'jhon', lastname: 'snow'};  
-
-  //greeting.call(jhon);
-  
-  function walk(metres, direction) {
-    console.log(`${this.name}, walk ${metres}mts in direction ${direction}`)
-  }
-  
-  //walk.call(jhon, 200, 'west');
-  
-  const arrArguments = [300, 'north'];
-  //walk.apply(jhon, arrArguments);
-  
-  const jhonGreeting = greeting.bind(jhon);
-  //jhonGreeting();  
-
-  const jhonWalk = walk.bind(jhon, 2000);
-  //jhonWalk('south')
-
-  //########### 70 - get max with rest operator
-  function getMaxWithRestOperator(first=-Infinity, ...rest) {
-    let max = first;
-    for(let value of rest) {
-      if(value > max) {max = value}
-    }
-    return max;
-  }  
-  //console.log(getMaxWithRest(1,23,54,3,456,236));
-
-  //########### 71 - time calculator that take a function and return the time that this take to resolve
-  function computeTime(fn) {
-	return function(...args) {
-   console.log(`Entering to Function name: ${fn.name}`);
-  	let time = Date.now();    
+//########### 71 - time calculator that take a function and return the time that this take to resolve
+function computeTime(fn) {
+  return function (...args) {
+    console.log(`Entering to Function name: ${fn.name}`);
+    let time = Date.now();
     try {
-    	return fn(...args);
+      return fn(...args);
+    } finally {
+      console.log(
+        `Exiting to function name: ${fn.name} in ${Date.now() - time} ms`
+      );
     }
-    finally {
-    	console.log(`Exiting to function name: ${fn.name} in ${Date.now() - time} ms`)
-    }
-  }
+  };
 }
 
 function summark(value) {
-	let sum = 0;
-  for(let i = 0; i <= value; i++) sum += i;
-  console.log('Suma: ', sum)
+  let sum = 0;
+  for (let i = 0; i <= value; i++) sum += i;
+  console.log("Suma: ", sum);
   return sum;
 }
 // const result = computeTime(summark)(1000000);
 // console.log(result)
 
- //########### 72 - copies a specified number of elements from one array into another array with optionally specified starting offsets for each array.
-function arrCopy({from, to=from, n=from.length, fromIndex=0, toIndex=0}) {
-	let valuesToCopy = from.slice(fromIndex, fromIndex + n);
-  return to.splice(toIndex,0,...valuesToCopy);
+//########### 72 - copies a specified number of elements from one array into another array with optionally specified starting offsets for each array.
+function arrCopy({
+  from,
+  to = from,
+  n = from.length,
+  fromIndex = 0,
+  toIndex = 0,
+}) {
+  let valuesToCopy = from.slice(fromIndex, fromIndex + n);
+  return to.splice(toIndex, 0, ...valuesToCopy);
 }
 
-let a = [1,2,3,4,5], b = [9,8,7,6,5];
-arrCopy({from: a, n: 3, to: b, fromIndex: 1, toIndex: 2})
+let a = [1, 2, 3, 4, 5],
+  b = [9, 8, 7, 6, 5];
+arrCopy({ from: a, n: 3, to: b, fromIndex: 1, toIndex: 2 });
 //console.log(b)
 
 //########### 73 - vector multiply by scalar value
-function vectorMultiply({x,y,z, ...rest}, scalar) {
-	return {x: x*scalar, y: y*scalar, z: z*scalar, ...rest}
+function vectorMultiply({ x, y, z, ...rest }, scalar) {
+  return { x: x * scalar, y: y * scalar, z: z * scalar, ...rest };
 }
 // console.log(vectorMultiply({x: 2, y: 3, z: 4, w: -1}, 2))
 
 //########### 74 - function composition
-const attackAndWalk = ({name}) => {
-	return {
-  	walk:() => console.log(`${name} walked`),
-    attack:() => console.log(`${name} attacked`)
-  }
-}
+const attackAndWalk = ({ name }) => {
+  return {
+    walk: () => console.log(`${name} walked`),
+    attack: () => console.log(`${name} attacked`),
+  };
+};
 
-const swimmer = function ({name}) {
-	return {
-  	swin: () => console.log(`${name} swam`)
-  }
-}
+const swimmer = function ({ name }) {
+  return {
+    swin: () => console.log(`${name} swam`),
+  };
+};
 
-const flyer = function({name}) {
-	return {
-  	fly: () => console.log(`${name} flew`)
-  }
-}
+const flyer = function ({ name }) {
+  return {
+    fly: () => console.log(`${name} flew`),
+  };
+};
 
 const monsterCreator = (name) => {
-	const obj = {name};
+  const obj = { name };
   return {
-  	...obj,
+    ...obj,
     ...swimmer(obj),
     ...flyer(obj),
-    ...attackAndWalk(obj)
-  }  
-}
+    ...attackAndWalk(obj),
+  };
+};
 
 // const newMonsterCreator = monsterCreator('zombie');
 // newMonsterCreator.swin()
 // newMonsterCreator.fly()
 // newMonsterCreator.walk()
 // newMonsterCreator.attack()
-  
+
+
+/**give two arrays, create a function that let's user know(true / false) wheter these two arrays contain any common item */
+const a = ["a", "b", "b", "d"];
+const b = ["e", "b", "g"];
+
+const compare = (arr1, arr2) => {
+  if (arr1 && arr2) {
+    for (let i = 0; i < arr1.length; i++) {
+      for (let j = 0; j < arr1.length; j++) {
+        if (arr1[i] === arr2[j]) return true;
+      }
+    }
+    return false;
+  }
+};
+//console.log(compare(a,b))
+
+const compareApproachTwo = (arr1, arr2) => {
+  let obj = {};
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (!obj[arr1[i]]) {
+      obj[arr1[i]] = "true";
+    }
+  }
+  for (let j = 0; j < arr2.length; j++) {
+    //if(obj.hasOwnProperty(arr2[j])) return true;
+    if (obj[arr2[j]]) return true;
+  }
+
+  return false;
+};
+//console.log(compareApproachTwo(a,b))
+
+const compareApproachThree = (arr1, arr2) => {
+  const obj = arr1.reduce((acc, curr) => {
+    if (!acc[curr]) acc[curr] = "true";
+    return acc;
+  }, {});
+
+  for (let i = 0; i < arr2.length; i++) {
+    if (obj[arr2[i]]) return true;
+  }
+
+  return false;
+};
+//console.log(compareApproachThree(a,b))
+
+const compareApproachFour = (arr1, arr2) => arr1.some((item) => arr2.includes(item));
+console.log(compareApproachFour(a, b));
