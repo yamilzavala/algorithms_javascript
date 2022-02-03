@@ -1403,3 +1403,29 @@ const getPairSecondApproach = (arr, target) => {
  return result;
 }
 //console.log(secondApproach(a,9))
+
+//########### 77 - same last than 76, but with an another aproach
+//complements to a new array. 
+//So, the validation that i need to check is that if the current value existe 
+//in the previous complement, return true, else false
+
+const dataSet = [1,2,3,4,5];
+//target 7
+//complement  			6,5,4,3,2
+
+//target 6
+//complement  			5,4,3,2,1
+
+const existTarget = (list, target) => {
+	let complement = new Set();
+  
+  for(let i = 0; i<list.length; i++) {
+  	if(complement.has(list[i])) {
+    	return true
+    } else {
+    	complement.add(target - list[i])
+    }
+  }
+  return false;
+}
+//console.log(existTarget(dataSet, 9));
