@@ -1431,4 +1431,120 @@ const existTarget = (list, target) => {
 //console.log(existTarget(dataSet, 9));
 
 
-//########### 78
+//########### 78 - getTimer each second - 
+//imperative way
+//declarative way for function composition: 
+//const composeReduce = (...fns) => (args => fns.reduce((acc, curr) => curr(acc), arg))
+
+function logClockTime() {
+	let time = getClockTime()
+  console.clear()
+  console.log(time)
+}
+
+function serialize() {
+	let date = new Date();
+  let time = {
+  	hour: date.getHours(),
+    minutes: date.getMinutes(),
+    seconds: date.getSeconds(),
+    ampm: 'AM'
+  }
+	return time;
+}
+
+function civilian(timeObj) {
+	if(timeObj.hour == 12) {
+  	timeObj.ampm = 'PM'
+  } else if(timeObj.hour >= 12) {
+  	timeObj.hour -= 12;
+  	timeObj.ampm = 'PM'
+  } else {
+  	timeObj.ampm = 'AM'
+  }
+}
+
+function doubleDigits(timeObj) {
+	if(timeObj.hour < 10) {
+  	 timeObj.hour = '0' + timeObj.hour;
+  } 
+  if(timeObj.minutes < 10) {
+  	 timeObj.minutes = '0' + timeObj.minutes;
+  }
+  if(timeObj.seconds < 10) {
+  	 timeObj.seconds = '0' + timeObj.seconds;
+  }
+  return timeObj;
+}
+
+
+function getClockTime() {	
+  let time = doubleDigits(serialize());
+  civilian(time)
+  return `${time.hour}:${time.minutes}:${time.seconds} ${time.ampm}`
+}
+
+//setInterval(logClockTime,1000);
+
+
+//########### 79 - Promises - getTimer each second - attempt to display 5 names in the console after 2 seconds each – that is, the first name appears after 2 seconds, the second after 4 seconds, and so on...
+//callback hell
+/*setTimeout(() => {
+	console.log('yamil')
+  	setTimeout(() => {
+			console.log('josue')
+        setTimeout(() => {
+      		console.log('zavala')
+    			}, 2000)
+		}, 2000)
+}, 2000)
+*/
+
+const showName = (name, delay) => {
+	return new Promise((resolve, reject) => {
+  	if(name && delay) {
+    	setTimeout(() => {
+      	console.log(name)
+        resolve();
+      }, delay);      
+    } else {
+    	reject('Error in promise')
+    }
+  });	
+}
+
+showName('yamil', 2000)
+.then(() => showName('josue', 2000))
+.then(() => showName('zavala', 2000))
+.catch((e) => console.log('Error to execute promise: ',e))
+
+//########### 80 - Suppose you are trying to get the unique hobbies from the array above. Let’s try it out:
+let users = [
+  {
+      name: "Sam",
+      age: 64,
+      hobby: "cooking",
+      hobbies: {
+        hobb1: "cooking",
+        hobby2: "sleeping"
+      }
+    },
+    { name: "Bruno", age: 56 },
+    { name: "Dave", age: 56, hobby: "Football" },
+    {
+      name: "Jacob",
+      age: 65,
+      hobbies: {
+        hobb1: "driving",
+        hobby2: "sleeping"
+      }
+    }
+  ];  
+    
+  let hobbiesListReduce = [...new Set(users.reduce((hobbiesAcc, currUser) => {
+    if(currUser.hobby) hobbiesAcc.push(currUser.hobby);
+    if(currUser.hobbies) hobbiesAcc.push(...Object.values(currUser.hobbies))  
+    return hobbiesAcc;
+  },[]))]
+    
+  //console.log(hobbiesListReduce)
